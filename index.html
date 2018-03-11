@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script>
+    var currentTimer;
+
+    function startTimer() {
+        // convert to int because Edge browser's number fields allow non-numerical inputs.
+        var input = parseInt(document.getElementById("numberBox").value);
+        
+        if (isNaN(input)) { // user input isn't a number
+            document.getElementById("errorOutput").innerHTML = "Please enter a number first.";
+            document.getElementById("targetOutput").innerHTML = "";
+        }
+        else { // user input is a number
+            document.getElementById("targetOutput").innerHTML = "Please wait " + input + " seconds";
+
+            // clear any ongoing timers
+            if (typeof currentTimer != "undefined") {
+                clearTimeout(currentTimer);
+            }
+            // start new timer
+            currentTimer = setTimeout(
+                function () {
+                    document.getElementById("targetOutput").innerHTML = "Finished processing";
+                },
+                input * 1000);
+            
+            // clear error div
+            document.getElementById("errorOutput").innerHTML = "";
+        }
+    }
+</script>
+
+<style>
+    div {
+        min-height: 40px;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Timer</h2>
+
+<input id="numberBox" type="number" min="0"><br>
+<button type="button" onclick=startTimer()>Start Timer</button>
+
+<div id="target">
+  <p>
+    <strong>Output</strong><br>
+    <span id="targetOutput"></span>
+  </p>
+</div>
+<div id="error">
+  <p>
+    <strong>Error</strong><br>
+    <span id="errorOutput"></span>
+  </p>
+</div>
+
+</body>
+
+</html>

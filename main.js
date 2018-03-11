@@ -12,12 +12,15 @@ function startTimer() {
         document.getElementById("targetOutput").innerHTML = "Please wait " + input + " seconds";
 
         // clear any ongoing timers
-        alert(currentTimer);
         if (typeof currentTimer != "undefined") {
             clearTimeout(currentTimer);
         }
         // start new timer
-        currentTimer = setTimeout(function () {document.getElementById("targetOutput").innerHTML = "Finished processing";}, input * 1000);
+        currentTimer = setTimeout(
+            function () {
+                document.getElementById("targetOutput").innerHTML = "Finished processing";
+            },
+            input * 1000);
         
         // clear error div
         document.getElementById("errorOutput").innerHTML = "";

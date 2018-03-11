@@ -6,7 +6,6 @@ function startTimer() {
     
     if (isNaN(input)) { // user input isn't a number
         document.getElementById("errorOutput").innerHTML = "Please enter a number first.";
-        document.getElementById("targetOutput").innerHTML = "";
     }
     else { // user input is a number
         document.getElementById("targetOutput").innerHTML = "Please wait " + input + " seconds";
